@@ -5,10 +5,26 @@ server:
 ##数据库配置
 spring: 
   datasource: 
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test
+    url: jdbc:mysql://localhost:3306/test?useSSL=false
     username: root
     password: admin
+    druid: # 连接池配置
+      initialSize: 3 #连接器启动时创建的初始连接数
+      maxActive: 10 #同时能分配的活跃连接的最大数目
+      testOnBorrow: true #从池中借出对象之前，是否对其进行验证
+      validationQuery: select 1 #在将池中连接返回给调用者之前，用于验证这些连接的 SQL 查询
+      StatViewServlet: #监控配置 
+        enabled: true #是否启用 默认true
+        allow: 127.0.0.1 #IP白名单
+        loginUsername: admin
+        loginPassword: admin
+        
+  jpa: 
+    showSql: true #显示sql
+    generateDdl: true #启动时初始化表结构
+    hibernate: 
+      ddlAuto: update #自动更新表结构
+      
 
 ##日志配置
 logging:

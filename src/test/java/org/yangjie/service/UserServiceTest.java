@@ -17,8 +17,8 @@ public class UserServiceTest {
 	private UserService userService;
 	
 	@Test
-	public void testGet() {
-		assertNotNull(userService.get("1","1"));
+	public void test() {
+		assertNotNull(userService.get(1));
 	}
 
 }
